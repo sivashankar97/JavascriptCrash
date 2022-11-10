@@ -407,3 +407,13 @@ const circel = (n) => {
 };
 
 const burn = (n) => n * n;
+
+//array find
+
+let movies = ["the", "he", "hee", "ee"];
+
+const theatre = movies.find((movie) => {
+  return movie.includes("he");
+});
+
+
