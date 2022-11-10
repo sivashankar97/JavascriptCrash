@@ -239,12 +239,11 @@ throwDice(6);
 
 //for loop arrays
 
-let no = ['l', 'h', 'k'];
-let nos = ['s', 'r','4']
+let no = ["l", "h", "k"];
+let nos = ["s", "r", "4"];
 for (let index = 0; index < no.length; index++) {
   const element = array[index];
-  console.log(element)
-  
+  console.log(element);
 }
 
 //nested loop
@@ -254,7 +253,7 @@ for (let index = 0; index < no.length; index++) {
 
   for (let index = 0; index < nos.length; index++) {
     const elementone = nos[index];
-    console.log(elementone)
+    console.log(elementone);
   }
 }
 
@@ -264,8 +263,17 @@ let guess = Math.floor(Math.random() * 10);
 while (guess !== target) {
   console.log(guess);
   guess = Math.floor(Math.random() * 10);
-
-  
 }
-console.log(`target :${target} Guess: ${guess}`)
+console.log(`target :${target} Guess: ${guess}`);
 
+//function
+
+const userinfo = {
+  name: "shankar",
+  lastname: "cj",
+};
+
+for (let prop in userinfo) {
+  console.log(prop);
+  console.log(userinfo[prop]);
+}
