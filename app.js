@@ -330,3 +330,15 @@ function sub(x, y) {
 const operation = [add, sub];
 
 operation[1](4, 5);
+
+function callTwice(func) {
+  func();
+  func();
+  func();
+}
+
+function cry() {
+  console.log("haha");
+}
+
+callTwice(cry); // threetimes
