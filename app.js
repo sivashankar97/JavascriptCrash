@@ -416,4 +416,8 @@ const theatre = movies.find((movie) => {
   return movie.includes("he");
 });
 
+//filter
 
+const numbersy = [1, 2, 3, 4];
+
+const very = numbersy.filter((n) => n % 2 === 1);
