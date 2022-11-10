@@ -240,9 +240,20 @@ throwDice(6);
 //for loop arrays
 
 let no = ['l', 'h', 'k'];
-
+let nos = ['s', 'r','4']
 for (let index = 0; index < no.length; index++) {
   const element = array[index];
   console.log(element)
   
+}
+
+//nested loop
+for (let index = 0; index < no.length; index++) {
+  const element = array[index];
+  console.log(element);
+
+  for (let index = 0; index < nos.length; index++) {
+    const elementone = nos[index];
+    console.log(elementone)
+  }
 }
