@@ -193,12 +193,25 @@ if (!user.notifications.length) {
   console.log("NO NEW NOTIFICATIONS!");
 }
 
-
 // Printing each element in an array
-const examScores = [ 98, 77, 84, 91, 57, 66 ];
+const examScores = [98, 77, 84, 91, 57, 66];
 
 for (let i = 0; i < examScores.length; i++) {
-	console.log(i, examScores[i]);
+  console.log(i, examScores[i]);
 }
 
+//nested loop
+const gameBoard = [
+  [4, 32, 8, 4],
+  [64, 8, 32, 2],
+  [8, 32, 16, 4],
+  [2, 8, 4, 2],
+];
 
+let totalScore = 0;
+for (let i = 0; i < gameBoard.length; i++) {
+  let row = gameBoard[i];
+  for (let j = 0; j < row.length; j++) {
+    totalScore += row[j];
+  }
+}
