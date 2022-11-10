@@ -1,0 +1,22 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Javascript crash Course",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivashankar97/JavascriptCrash.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sivashankar97/JavascriptCrash/issues"
+  },
+  "homepage": "https://github.com/sivashankar97/JavascriptCrash#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
