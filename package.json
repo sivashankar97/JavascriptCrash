@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/sivashankar97/JavascriptCrash#readme",
   "dependencies": {
+    "caporal": "^1.4.0",
+    "chokidar": "^3.5.3",
     "nodemon": "^2.0.20"
   }
 }
