@@ -345,11 +345,21 @@ callTwice(cry); // threetimes
 
 //function factories
 function double(params) {
-   return function () {
-    console.log("hi")
-   }
+  return function () {
+    console.log("hi");
+  };
 }
 
 const van = double();
 
-van();// hi
+van(); // hi
+
+function makebeweenFunc(x, y) {
+  return function (num) {
+    return num >= x && num <= y;
+  };
+}
+
+const isChild = makebeweenFunc(x, y);
+
+const isInNineties = makebeweenFunc(1990, 1999);
