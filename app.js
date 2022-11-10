@@ -342,3 +342,14 @@ function cry() {
 }
 
 callTwice(cry); // threetimes
+
+//function factories
+function double(params) {
+   return function () {
+    console.log("hi")
+   }
+}
+
+const van = double();
+
+van();// hi
