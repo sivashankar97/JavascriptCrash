@@ -365,10 +365,19 @@ const isChild = makebeweenFunc(x, y);
 const isInNineties = makebeweenFunc(1990, 1999);
 
 //callbacks
-function grumbs (){
+function grumbs() {
   console.log("hi");
 }
 setTimeout(grumbs, 5000);
 
-
 //hoistings
+
+var animal;
+animal = "tapie";
+
+let shrimp = "harly quin";
+console.log(shrimp);
+
+function how() {
+  console.log("aaaa");
+}
