@@ -149,13 +149,23 @@ let colorSS = {
 colorSS.red; // red
 colorSS["blue"]; //blue
 
-
 ///updateing adding
 
 const userReviews = {};
 
-userReviews['shankar'] =  'shankar' ;
+userReviews["shankar"] = "shankar";
 
-userReviews.lastname = 'cj';
+userReviews.lastname = "cj";
 
 //netset array and objects
+const student = {
+  firstName: "David",
+  lastName: "Jones",
+  strengths: ["Music", "Art"],
+  exams: {
+    midterm: 92,
+    final: 88,
+  },
+};
+
+const avg = (student.exams.midterm + student.exams.final) / 2;
