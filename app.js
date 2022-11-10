@@ -216,7 +216,6 @@ for (let i = 0; i < gameBoard.length; i++) {
   }
 }
 
-
 function greet(nickname) {
   console.log(`Hi, ${nickname}!`);
 }
@@ -238,4 +237,12 @@ function throwDice(numRolls) {
 throwDice(2);
 throwDice(6);
 
+//for loop arrays
 
+let no = ['l', 'h', 'k'];
+
+for (let index = 0; index < no.length; index++) {
+  const element = array[index];
+  console.log(element)
+  
+}
