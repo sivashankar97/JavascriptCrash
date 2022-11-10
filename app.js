@@ -278,26 +278,24 @@ for (let prop in userinfo) {
   console.log(userinfo[prop]);
 }
 
-
 //function
 
-function add (x,y){
-  return x +y ;
+function add(x, y) {
+  return x + y;
 }
 
-//scope 
+//scope
 
-function lo (){
+function lo() {
   let person = "tomm";
-
 }
 lo();
-console.log(person); 
+console.log(person);
 
 //block scope
 
-if(true){
-  let anial = 'eel';
+if (true) {
+  let anial = "eel";
 }
 console.log(animal);
 
@@ -306,8 +304,7 @@ console.log(animal);
 function outer() {
   let movie = "lil";
   function inner() {
-    console.log(movie.toUpperCase())
-    
+    console.log(movie.toUpperCase());
   }
   inner();
 }
@@ -316,6 +313,20 @@ function outer() {
 
 const square = function (num) {
   return num * num;
+};
+
+square(7); //49
+
+//higher order function
+
+function add(x, y) {
+  return x + y;
 }
 
-square(7);  //49
+function sub(x, y) {
+  return x + y;
+}
+
+const operation = [add, sub];
+
+operation[1](4, 5);
