@@ -381,3 +381,16 @@ console.log(shrimp);
 function how() {
   console.log("aaaa");
 }
+
+//array callback methods
+
+const numbers = [21, 22, 23, 24];
+
+numbers.forEach(function (num) {
+  console.log(num * num);
+});
+
+//array mapping
+const doubles = numbers.map(function (num) {
+  return num * 2;
+});
