@@ -372,7 +372,7 @@ setTimeout(grumbs, 5000);
 
 //hoistings
 
-var animal;
+// var animal; //
 animal = "tapie";
 
 let shrimp = "harly quin";
@@ -394,3 +394,16 @@ numbers.forEach(function (num) {
 const doubles = numbers.map(function (num) {
   return num * 2;
 });
+
+//arrow function
+
+const sure = (x) => {
+  return x * x;
+};
+
+//implicts runs
+const circel = (n) => {
+  n * n;
+};
+
+const burn = (n) => n * n;
