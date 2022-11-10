@@ -284,3 +284,30 @@ for (let prop in userinfo) {
 function add (x,y){
   return x +y ;
 }
+
+//scope 
+
+function lo (){
+  let person = "tomm";
+
+}
+lo();
+console.log(person); 
+
+//block scope
+
+if(true){
+  let anial = 'eel';
+}
+console.log(animal);
+
+//lexical scope
+
+function outer() {
+  let movie = "lil";
+  function inner() {
+    console.log(movie.toUpperCase())
+    
+  }
+  inner();
+}
