@@ -277,3 +277,10 @@ for (let prop in userinfo) {
   console.log(prop);
   console.log(userinfo[prop]);
 }
+
+
+//function
+
+function add (x,y){
+  return x +y ;
+}
