@@ -363,3 +363,12 @@ function makebeweenFunc(x, y) {
 const isChild = makebeweenFunc(x, y);
 
 const isInNineties = makebeweenFunc(1990, 1999);
+
+//callbacks
+function grumbs (){
+  console.log("hi");
+}
+setTimeout(grumbs, 5000);
+
+
+//hoistings
