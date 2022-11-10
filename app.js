@@ -169,3 +169,26 @@ const student = {
 };
 
 const avg = (student.exams.midterm + student.exams.final) / 2;
+
+let nums = [1, 2, 3];
+let mystery = [1, 2, 3];
+let moreNums = nums;
+
+nums === mystery; // false
+
+nums === moreNums; //true
+
+const user = {
+  username: "CherryGarcia8",
+  email: "garcia@gmail.com",
+  notifications: ["message", "alert"],
+};
+
+//not WORK!
+if (user.notifications === []) {
+  console.log("NO NEW NOTIFICATIONS!");
+}
+// WORK!
+if (!user.notifications.length) {
+  console.log("NO NEW NOTIFICATIONS!");
+}
