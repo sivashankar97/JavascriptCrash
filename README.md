@@ -1,4 +1,4 @@
-Javascript crash Course
+## avascript crash Course
 
 1- Introudction
 
@@ -28,5 +28,4 @@ Javascript crash Course
 
 14-asychrous code and callbacks
 
-/////////////////////////////
-E-commerce Application Setup
+## E-commerce Application Setup
