@@ -5,8 +5,8 @@ const app = express();
 app.get("/", (req, res) => {
   res.send(`
   <div>
-  <form>
-  <input placeholder="email"/>
+  <form method="POST" >
+   <input placeholder="email"/>
    <input placeholder="password" />
    <input placeholder="password confrimation" />
    <button> Sign Up </button>
