@@ -1,5 +1,7 @@
 const fs = require("fs");
 const crypto = require("crypto");
+const util = require("util");
+const scrypt = util.promisify(crypto.scrypt);
 
 class UsersRepository {
   constructor(filename) {
@@ -40,9 +42,19 @@ class UsersRepository {
   async create(attrs) {
     attrs.id = this.randomId();
 
+    const salt = crypto.randomBytes(8).toString("hex");
+    const buf = await scrypt(attrs.password, salt, 64);
+
     const records = await this.getAll();
-    records.push(attrs);
+    const record = {
+      ...attrs,
+      password: `${buf.toString("hex")}.${salt}`,
+    };
+    records.push(record);
+
     await this.writeAll(records);
+
+    return record;
   }
 
   async writeAll(records) {
@@ -74,24 +86,20 @@ class UsersRepository {
     if (!record) {
       throw new Error(`Record id ${id} not found`);
     }
-
     Object.assign(record, attrs);
     await this.writeAll(records);
   }
 
   async getOneBy(filters) {
     const records = await this.getAll();
-
     for (let record of records) {
-      let found = true;
-
+      let founds = true;
       for (let key in filters) {
         if (record[key] !== filters[key]) {
-          found = false;
+          founds = false;
         }
       }
-
-      if (found) {
+      if (founds) {
         return record;
       }
     }
