@@ -1,7 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const usersRepo = require("./repositories/users");
 const cookieSession = require("cookie-session");
+const authRout = require("./routes/admin/auth");
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,7 +12,7 @@ app.use(
   })
 );
 
-app.use(authRouter);
+app.use(authRout);
 
 app.listen(3000, () => {
   console.log("Listening");
