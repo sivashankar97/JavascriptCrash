@@ -13,6 +13,10 @@ app.use(
 
 app.use(authRouter);
 
+app.listen(3000, () => {
+  console.log("Listening");
+});
+
 // app.get("/signup", (req, res) => {
 //   res.send(`
 //     <div>
@@ -99,7 +103,3 @@ app.use(authRouter);
 // });
 
 //
-
-app.listen(3000, () => {
-  console.log("Listening");
-});
