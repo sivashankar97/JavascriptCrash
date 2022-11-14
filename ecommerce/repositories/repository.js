@@ -119,7 +119,7 @@ module.exports = class URepository {
   }
 };
 
-module.exports = new UsersRepository("users.json");
+// module.exports = new UsersRepository("users.json");
 
 // const test = async () => {
 //   const repo = new UsersRepository("users.json");
