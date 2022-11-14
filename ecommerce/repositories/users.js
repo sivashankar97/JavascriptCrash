@@ -55,14 +55,26 @@ class UsersRepository {
   randomId() {
     return crypto.randomBytes(4).toString("hex");
   }
+
+  async getOneid(id) {
+    const records = await this.getAll();
+    return records.find((record) => record.id === id);
+  }
+  async deleteid(id) {
+    const records = await this.getAll();
+    const filteredRecords = records.filter((record) => record.id !== id);
+    await this.writeAll(filteredRecords);
+  }
 }
 
 const test = async () => {
   const repo = new UsersRepository("users.json");
 
-  await repo.create({ email: "testddd@test.com", password: "password" });
+  //await repo.create({ email: "tesfftjhhtjddd@test.com", password: "password" });
 
-  const users = await repo.getAll();
+  // const users = await repo.getAll();
+  // const users = await repo.getOneid("fb78d28e");
+   //const users = await repo.deleteid("fb78d28e");
 
   console.log(users);
 };
