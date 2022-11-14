@@ -3,7 +3,7 @@ const usersRepo = require("../../repositories/users");
 const signupTempl = require("../../views/admin/auth/signup");
 const signinTempl = require("../../views/admin/auth/signin");
 const router = express.Router();
-const { check } = require("express-validator");
+const { check, validationResult } = require("express-validator");
 
 //templating & routing signup
 router.get("/signup", (req, res) => {
@@ -15,9 +15,30 @@ router.get("/signup", (req, res) => {
 router.post(
   "/signup",
   [
-    check("email").trim().normalizeEmail().isEmail(),
-    check("password").trim().isLength({ min: 4, max: 20 }),
-    check("passwordConfirmation").trim().isLength({ min: 4, max: 20 }),
+    check("Email")
+      .trim()
+      .normalizeEmail()
+      .isEmail()
+      .withMessage("Must valid email")
+      .custom(async (email) => {
+        const existingUser = await usersRepo.getOneBy({ email });
+        if (existingUser) {
+          throw new Error("Email alreadyuse");
+        }
+      }),
+    check("Password")
+      .trim()
+      .isLength({ min: 4, max: 20 })
+      .withMessage("Mustbetween 4 and 20 characters"),
+    check("passwordConfirmation")
+      .trim()
+      .isLength({ min: 4, max: 20 })
+      .withMessage("Mustbetween 4 and 20 characters")
+      .custom((passwordConfirmation, { req }) => {
+        if (passwordConfirmation !== req.body.password) {
+          throw new Error("Passwordsmustmatch");
+        }
+      }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
