@@ -60,23 +60,56 @@ class UsersRepository {
     const records = await this.getAll();
     return records.find((record) => record.id === id);
   }
+
   async deleteid(id) {
     const records = await this.getAll();
     const filteredRecords = records.filter((record) => record.id !== id);
     await this.writeAll(filteredRecords);
   }
+
+  async updateid(id, attrs) {
+    const records = await this.getAll();
+    const record = records.find((record) => record.id === id);
+
+    if (!record) {
+      throw new Error(`Record id ${id} not found`);
+    }
+
+    Object.assign(record, attrs);
+    await this.writeAll(records);
+  }
+
+  async getOneBy(filters) {
+    const records = await this.getAll();
+
+    for (let record of records) {
+      let found = true;
+
+      for (let key in filters) {
+        if (record[key] !== filters[key]) {
+          found = false;
+        }
+      }
+
+      if (found) {
+        return record;
+      }
+    }
+  }
 }
 
-const test = async () => {
-  const repo = new UsersRepository("users.json");
+module.exports = new UsersRepository("users.json");
 
-  //await repo.create({ email: "tesfftjhhtjddd@test.com", password: "password" });
+// const test = async () => {
+//   const repo = new UsersRepository("users.json");
 
-  // const users = await repo.getAll();
-  // const users = await repo.getOneid("fb78d28e");
-   //const users = await repo.deleteid("fb78d28e");
+//   //await repo.create({ email: "tesfftjhhtjddd@test.com", password: "password" });
 
-  console.log(users);
-};
-//creating data store file
-test();
+//   // const users = await repo.getAll();
+//   // const users = await repo.getOneid("fb78d28e");
+//   //const users = await repo.deleteid("fb78d28e");
+
+//   console.log(users);
+// };
+// //creating data store file
+// test();
