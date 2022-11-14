@@ -5,6 +5,12 @@ const signinTempl = require("../../views/admin/auth/signin");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 
+const {
+  requireEmail,
+  requirePassword,
+  requirePasswordConfirmation,
+} = require("./validators");
+
 //templating & routing signup
 router.get("/signup", (req, res) => {
   res.send(signupTempl({ req }));
@@ -14,46 +20,20 @@ router.get("/signup", (req, res) => {
 
 router.post(
   "/signup",
-  [
-    check("Email")
-      .trim()
-      .normalizeEmail()
-      .isEmail()
-      .withMessage("Must valid email")
-      .custom(async (email) => {
-        const existingUser = await usersRepo.getOneBy({ email });
-        if (existingUser) {
-          throw new Error("Email alreadyuse");
-        }
-      }),
-    check("Password")
-      .trim()
-      .isLength({ min: 4, max: 20 })
-      .withMessage("Mustbetween 4 and 20 characters"),
-    check("passwordConfirmation")
-      .trim()
-      .isLength({ min: 4, max: 20 })
-      .withMessage("Mustbetween 4 and 20 characters")
-      .custom((passwordConfirmation, { req }) => {
-        if (passwordConfirmation !== req.body.password) {
-          throw new Error("Passwordsmustmatch");
-        }
-      }),
-  ],
+  [requireEmail, requirePassword, requirePasswordConfirmation],
   async (req, res) => {
     const errors = validationResult(req);
-    console.log(errors);
+
+    if (!errors.isEmpty()) {
+      return res.send(signupTemplate({ req, errors }));
+    }
+
     const { email, password, passwordConfirmation } = req.body;
-    const existingUser = await usersRepo.getOneBy({ email });
-    if (existingUser) {
-      return res.send("Email in use");
-    }
-    if (password !== passwordConfirmation) {
-      return res.send("Passwords must match");
-    }
     const user = await usersRepo.create({ email, password });
+
     req.session.userId = user.id;
-    res.send("Accountcreated!");
+
+    res.send("Account created!!!");
   }
 );
 //routing signout
