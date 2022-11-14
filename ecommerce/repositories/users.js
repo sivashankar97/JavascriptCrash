@@ -64,6 +64,11 @@ class UsersRepository {
     );
   }
 
+  async comparePasswords(saved, supplied) {
+    const [hashed, salt] = saved.split(".");
+    const hashedSupplied = await scrypt(supplied, salt, 64);
+    return hashed === hashedSupplied;
+  }
   randomId() {
     return crypto.randomBytes(4).toString("hex");
   }

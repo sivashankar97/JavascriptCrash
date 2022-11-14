@@ -13,11 +13,13 @@ app.use(
 app.get("/signup", (req, res) => {
   res.send(`
     <div>
+
+    Your Userid: ${req.session.userId}
       <form method="POST">
         <input name="email" placeholder="email" />
         <input name="password" placeholder="password" />
         <input name="passwordConfirmation" placeholder="password confirmation" />
-        <button>Sign Up</button>
+        <button>SignUp</button>
       </form>
     </div>
   `);
@@ -40,6 +42,7 @@ app.get("/signup", (req, res) => {
 //   }
 // };
 
+//for signup
 app.post("/signup", async (req, res) => {
   const { email, password, passwordConfirmation } = req.body;
 
@@ -56,12 +59,7 @@ app.post("/signup", async (req, res) => {
 
   res.send("Account created!!!");
 });
-
-app.get("/signout", (req, res) => {
-  req.session = null;
-  res.send("You are logged out");
-});
-
+//for signin
 app.get("/signin", (req, res) => {
   res.send(`
     <div>
@@ -73,6 +71,11 @@ app.get("/signin", (req, res) => {
     </div>
   `);
 });
+// for signou
+app.get("/signout", (req, res) => {
+  req.session = null;
+  res.send("You are logged out");
+});
 
 app.post("/signin", async (req, res) => {
   const { email, password } = req.body;
@@ -80,16 +83,16 @@ app.post("/signin", async (req, res) => {
   const user = await usersRepo.getOneBy({ email });
 
   if (!user) {
-    return res.send("Email not found");
+    return res.send("Email notfound");
   }
 
   if (user.password !== password) {
-    return res.send("Invalid password");
+    return res.send("Invalid_password");
   }
 
   req.session.userId = user.id;
 
-  res.send("You are signed in!!!");
+  res.send("Youre signedin BOOM");
 });
 
 //
