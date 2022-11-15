@@ -1,10 +1,9 @@
 const express = require("express");
-const usersRepo = require("../../repositories/users");
-const signupTempl = require("../../views/admin/auth/signup");
-const signinTempl = require("../../views/admin/auth/signin");
-const router = express.Router();
 const { check, validationResult } = require("express-validator");
 
+const usersRepo = require("../../repositories/users");
+const signupTemplate = require("../../views/admin/auth/signup");
+const signinTemplate = require("../../views/admin/auth/signin");
 const {
   requireEmail,
   requirePassword,
@@ -13,12 +12,11 @@ const {
   requireValidPasswordForUser,
 } = require("./validator");
 
-//templating & routing signup
-router.get("/signup", (req, res) => {
-  res.send(signupTempl({ req }));
-});
+const router = express.Router();
 
-//routing
+router.get("/signup", (req, res) => {
+  res.send(signupTemplate({ req }));
+});
 
 router.post(
   "/signup",
@@ -27,7 +25,7 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.send(signupTempl({ req, errors }));
+      return res.send(signupTemplate({ req, errors }));
     }
 
     const { email, password, passwordConfirmation } = req.body;
@@ -38,18 +36,16 @@ router.post(
     res.send("Account created!!!");
   }
 );
-//routing signout
+
 router.get("/signout", (req, res) => {
   req.session = null;
-  res.send("Your logged out");
+  res.send("You are logged out");
 });
 
-//Template & routing signIn
 router.get("/signin", (req, res) => {
-  res.send(signinTempl());
+  res.send(signinTemplate({}));
 });
 
-//routing Sigin
 router.post(
   "/signin",
   [requireEmailExists, requireValidPasswordForUser],
@@ -57,7 +53,7 @@ router.post(
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.send(signinTempl({ errors }));
+      return res.send(signinTemplate({ errors }));
     }
 
     const { email } = req.body;
@@ -66,7 +62,7 @@ router.post(
 
     req.session.userId = user.id;
 
-    res.send("You are signin!");
+    res.send("You are signed in!!!");
   }
 );
 
