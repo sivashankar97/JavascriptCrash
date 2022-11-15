@@ -19,7 +19,7 @@ module.exports = class Repository {
     attrs.id = this.randomId();
 
     const records = await this.getAll();
-    records.push(attr);
+    records.push(attrs);
     await this.writeAll(records);
 
     return attrs;
@@ -85,19 +85,3 @@ module.exports = class Repository {
     }
   }
 };
-
-// module.exports = new UsersRepository("users.json");
-
-// const test = async () => {
-//   const repo = new UsersRepository("users.json");
-
-//   //await repo.create({ email: "tesfftjhhtjddd@test.com", password: "password" });
-
-//   // const users = await repo.getAll();
-//   // const users = await repo.getOneid("fb78d28e");
-//   //const users = await repo.deleteid("fb78d28e");
-
-//   console.log(users);
-// };
-// //creating data store file
-// test();
