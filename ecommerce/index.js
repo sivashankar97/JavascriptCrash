@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const authRout = require("./routes/admin/auth");
+const productsRou = require("./routes/admin/products");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(
 );
 
 app.use(authRout);
+app.use(productsRou);  //product routing
 
 app.listen(3000, () => {
   console.log("Listening");
