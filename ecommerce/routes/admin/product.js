@@ -1,8 +1,8 @@
 const express = require("express");
 const { validationResult } = require("express-validator");
-const productsRepo = require("../../repositories/products");
-const productsNewTemplate = require("../../views/admin/products/new");
-const { requireTitle, requirePrice } = require("./validators");
+// const productsRepo = require("../../repositories/products");
+const productsNewTemplate = require("../../views/admin/products/newone");
+const { requireTitle, requirePrice } = require("./validator");
 
 const router = express.Router();
 
