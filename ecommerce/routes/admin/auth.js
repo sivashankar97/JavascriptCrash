@@ -4,7 +4,7 @@ const express = require("express");
 const usersRepo = require("../../repositories/users");
 const signupTemplate = require("../../views/admin/auth/signup");
 const signinTemplate = require("../../views/admin/auth/signin");
-const { handleErrors } = require("./middlewares");
+const { handleErrors } = require("../admin/middleware");
 
 const {
   requireEmail,
