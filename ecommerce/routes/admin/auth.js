@@ -9,7 +9,9 @@ const {
   requireEmail,
   requirePassword,
   requirePasswordConfirmation,
-} = require("./validators");
+  requireEmailExists,
+  requireValidPasswordForUser,
+} = require("./validator");
 
 //templating & routing signup
 router.get("/signup", (req, res) => {
