@@ -1,5 +1,14 @@
 const { forEach, map } = require("./index");
 
+const test = (desc, fn) => {
+  console.log("----", desc);
+  try {
+    fn();
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 let sum = 0;
 forEach([1, 2, 3], (value) => {
   sum += value;
