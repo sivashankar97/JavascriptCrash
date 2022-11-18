@@ -29,3 +29,17 @@
 14-asychrous code and callbacks
 
 ## E-commerce Application Setup
+
+1 - Design custom database
+
+2 - Prodcution Grade Authentication
+
+3 - Structring Javascript Function
+
+4 - Image file adn upload
+
+5 - Buiding Shop cart
+
+6 - Basics Of TEsting
+
+7- Building Testing Framework from Scaratch
